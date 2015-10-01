@@ -36,5 +36,10 @@ public class TorpedoClient {
 				System.out.println((result) ? "talált" : "nem talált");
 			}
 		}
+		
+		try {
+			in.close();
+		} catch (IOException e) {
+		}
 	}
 }
