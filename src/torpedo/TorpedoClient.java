@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import javax.xml.ws.BindingProvider;
+import javax.xml.ws.WebServiceException;
 
 public class TorpedoClient {
 	public static void main(String[] args) {
@@ -32,8 +33,13 @@ public class TorpedoClient {
 			}
 			
 			if (isValid) {
-				boolean result = port.shot(x, y);
-				System.out.println((result) ? "talált" : "nem talált");
+				try {
+					boolean result = port.shot(x, y);
+					System.out.println((result) ? "talált" : "nem talált");
+				} catch (WebServiceException e) {
+					System.out.println("A kapcsolat megszakadt a szerverrel!");
+					break;
+				}
 			}
 		}
 		
