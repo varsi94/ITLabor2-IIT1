@@ -21,11 +21,13 @@ public class Torpedo implements ITorpedo {
 
 	@Override
 	public boolean shot(int i, int j) {
+		boolean result = false;
 		if (i > 0 && i <= 10 && j > 0 && j <= 10) {
-			boolean result = table[i-1][j-1];
+			result = table[i-1][j-1];
 			System.out.println(String.format("(%d,%d)=%s", i, j, result));
 			return result;
 		} else {
+			System.out.println(String.format("(%d,%d)=%s", i, j, result));
 			return false;
 		}
 	}
