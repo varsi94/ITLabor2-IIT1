@@ -9,13 +9,18 @@ import javax.xml.ws.WebServiceException;
 
 public class TorpedoClient {
 	public static void main(String[] args) {
+		if (args.length == 0) {
+			System.out.println("Hiányzó szerver elérhetőség!");
+			return;
+		}
+		
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		
 		ITorpedo_Service proxy = new ITorpedo_Service();
 		ITorpedo port = proxy.getITorpedoSoap11HttpPort();
 		
 		BindingProvider provider = (BindingProvider)port;
-		provider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:8080/torpedo");
+		provider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, args[0]);
 		
 		int x = -1;
 		int y = -1;
