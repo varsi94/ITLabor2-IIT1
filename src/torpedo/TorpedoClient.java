@@ -33,8 +33,9 @@ public class TorpedoClient {
 				}
 				y = Integer.parseInt(in.readLine());
 				isValid = true;
-			} catch (NumberFormatException | IOException e) {
+			} catch (NumberFormatException e) {
 				System.out.println("Nem jó szám!");
+			} catch (IOException e) {
 			}
 			
 			if (isValid) {
