@@ -37,6 +37,7 @@ public class TorpedoClient {
 				} catch (NumberFormatException e) {
 					System.out.println("Nem jó szám!");
 				} catch (IOException e) {
+					break;
 				} catch (WebServiceException e) {
 					System.out.println("A kapcsolat megszakadt a szerverrel!");
 					break;

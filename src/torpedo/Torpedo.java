@@ -4,7 +4,7 @@ import java.util.Random;
 
 import javax.jws.WebService;
 
-@WebService(endpointInterface="torpedo.ITorpedo", targetNamespace="http://itlabor2/torpedo")
+@WebService(endpointInterface="torpedo.ITorpedo", targetNamespace="http://itlabor/torpedo")
 public class Torpedo implements ITorpedo {
 	private boolean table[][];
 	
