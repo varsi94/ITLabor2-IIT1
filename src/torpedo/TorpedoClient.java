@@ -24,34 +24,30 @@ public class TorpedoClient {
 		
 		int x = -1;
 		int y = -1;
-		while (x != 0) {
-			boolean isValid = false;
-			try {
-				x = Integer.parseInt(in.readLine());
-				if (x == 0) {
-					break;
-				}
-				y = Integer.parseInt(in.readLine());
-				isValid = true;
-			} catch (NumberFormatException e) {
-				System.out.println("Nem jó szám!");
-			} catch (IOException e) {
-			}
-			
-			if (isValid) {
+		try {	
+			while (true) {
 				try {
+					x = Integer.parseInt(in.readLine());
+					if (x == 0) {
+						break;
+					}
+					y = Integer.parseInt(in.readLine());
 					boolean result = port.shot(x, y);
 					System.out.println((result) ? "talált" : "nem talált");
+				} catch (NumberFormatException e) {
+					System.out.println("Nem jó szám!");
+				} catch (IOException e) {
 				} catch (WebServiceException e) {
 					System.out.println("A kapcsolat megszakadt a szerverrel!");
 					break;
 				}
 			}
-		}
-		
-		try {
-			in.close();
-		} catch (IOException e) {
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

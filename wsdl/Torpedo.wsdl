@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<wsdl:definitions
+	name="Torpedo"
+	targetNamespace="http://itlabor/torpedo"
+	xmlns:tpd="http://itlabor/torpedo"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl">
+	
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import schemaLocation="Torpedo.xsd" namespace="http://itlabor/torpedo"/>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="ITorpedo_shot_InputMessage">
+		<wsdl:part name="parameters" element="tpd:shot"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ITorpedo_shot_OutputMessage">
+		<wsdl:part name="parameters" element="tpd:shotResponse"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="ITorpedo">
+		<wsdl:operation name="shot">
+			<wsdl:input wsaw:Action="http://itlabor/torpedo/ITorpedo/shot" message="tpd:ITorpedo_shot_InputMessage"/>
+			<wsdl:output wsaw:Action="http://itlabor/torpedo/ITorpedo/shotResponse" message="tpd:ITorpedo_shot_OutputMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+</wsdl:definitions>
